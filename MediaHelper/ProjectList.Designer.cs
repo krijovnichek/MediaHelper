@@ -1,6 +1,6 @@
 ﻿namespace MediaHelper
 {
-    partial class BaseForm
+    partial class ProjectList
     {
         /// <summary>
         /// Required designer variable.
@@ -30,15 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // BaseForm
+            // ProjectList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Font = new System.Drawing.Font("Roboto", 8.25F);
-            this.Name = "BaseForm";
-            this.Text = "BaseForm";
+            this.Name = "ProjectList";
+            this.Text = "ProjectList";
             this.ResumeLayout(false);
 
         }

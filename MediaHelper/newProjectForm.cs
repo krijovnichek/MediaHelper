@@ -40,7 +40,7 @@ namespace MediaHelper
 
         private void button2_Click(object sender, EventArgs e)
         {
-                var f = new Form1();
+                var f = new StartForm();
                 f.Show();
                 this.Hide();
         }
@@ -64,7 +64,7 @@ namespace MediaHelper
 
         private void newProjectForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var f = new Form1();
+            var f = new StartForm();
             f.Show();
             this.Hide();
         }

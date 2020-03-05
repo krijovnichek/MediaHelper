@@ -1,6 +1,6 @@
 ﻿namespace MediaHelper
 {
-    partial class BaseForm
+    partial class HardwareForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // BaseForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Font = new System.Drawing.Font("Roboto", 8.25F);
-            this.Name = "BaseForm";
-            this.Text = "BaseForm";
-            this.ResumeLayout(false);
-
+            this.Text = "Hardware";
         }
 
         #endregion

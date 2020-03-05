@@ -30,7 +30,7 @@ namespace MediaHelper
 
             int fCount = Directory.GetFiles(dir, ".", SearchOption.AllDirectories).Count();
             filesCount.Text = fCount.ToString();
-            sizeLabel.Text = GetDirectorySize(dir).ToString();
+            sizeLabel.Text = GetDirectorySize(dir).ToString()+ "bytes";
         }
 
 
