@@ -40,9 +40,9 @@ namespace MediaHelper
 
         private void button2_Click(object sender, EventArgs e)
         {
-                var f = new StartForm();
+/*                var f = new StartForm();
                 f.Show();
-                this.Hide();
+ */               this.Close();
         }
 
         private void dirLabel_TextChanged(object sender, EventArgs e)
@@ -102,6 +102,11 @@ namespace MediaHelper
             {
                 // Fail silently
             }
+        }
+
+        private void newProjectForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

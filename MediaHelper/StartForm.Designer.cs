@@ -66,14 +66,14 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(932, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(932, 24);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // проектToolStripMenuItem
@@ -81,20 +81,20 @@
             this.проектToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.новыйПроектToolStripMenuItem});
             this.проектToolStripMenuItem.Name = "проектToolStripMenuItem";
-            this.проектToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
+            this.проектToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.проектToolStripMenuItem.Text = "Проект";
             // 
             // новыйПроектToolStripMenuItem
             // 
             this.новыйПроектToolStripMenuItem.Name = "новыйПроектToolStripMenuItem";
-            this.новыйПроектToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.новыйПроектToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.новыйПроектToolStripMenuItem.Text = "Новый проект";
             this.новыйПроектToolStripMenuItem.Click += new System.EventHandler(this.новыйПроектToolStripMenuItem_Click);
             // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // panel2
@@ -116,7 +116,7 @@
             this.np.Location = new System.Drawing.Point(15, 74);
             this.np.Margin = new System.Windows.Forms.Padding(0);
             this.np.Name = "np";
-            this.np.Size = new System.Drawing.Size(176, 29);
+            this.np.Size = new System.Drawing.Size(139, 23);
             this.np.TabIndex = 0;
             this.np.Text = "NEW PROJECT";
             this.np.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -129,7 +129,7 @@
             this.label1.Location = new System.Drawing.Point(4, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(367, 51);
+            this.label1.Size = new System.Drawing.Size(294, 41);
             this.label1.TabIndex = 3;
             this.label1.Text = "LATEST PROJECT";
             // 
@@ -162,7 +162,7 @@
             this.label7.Location = new System.Drawing.Point(15, 74);
             this.label7.Margin = new System.Windows.Forms.Padding(0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(188, 29);
+            this.label7.Size = new System.Drawing.Size(147, 23);
             this.label7.TabIndex = 0;
             this.label7.Text = "OPEN PROJECT";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -185,7 +185,7 @@
             this.label2.Location = new System.Drawing.Point(25, 74);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 29);
+            this.label2.Size = new System.Drawing.Size(117, 23);
             this.label2.TabIndex = 0;
             this.label2.Text = "STATISTICS";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -206,12 +206,12 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Roboto Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(27, 74);
+            this.label3.Location = new System.Drawing.Point(38, 74);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 29);
+            this.label3.Size = new System.Drawing.Size(89, 23);
             this.label3.TabIndex = 0;
-            this.label3.Text = "HARDWARE";
+            this.label3.Text = "TECHNIC";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
@@ -266,7 +266,7 @@
             // 
             // StartForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(42)))));

@@ -54,14 +54,14 @@ namespace MediaHelper
             pr1.GetInfo();
             //label2.Text = pr1.GetInfo();
             var npwin = new newProjectForm();
-            npwin.Show();
+            npwin.ShowDialog();
             npwin.Closed += (s, args) => this.Show();
             this.Hide();
         }
 
         private void newHardware()
         {
-            var hw = new HardwareForm();
+            var hw = new TechnicForm();
             hw.Show();
             this.Hide();
             hw.Closed += (s, args) => this.Show();
@@ -73,7 +73,7 @@ namespace MediaHelper
             var st = new StatisticsForm();
             st.Show();
             this.Hide();
-            st.Closed += (s, args) => this.Show();
+          /*  st.Closed += (s, args) => this.Show();*/
 
         }
 
@@ -105,7 +105,7 @@ namespace MediaHelper
 
         private void panel5_MouseClick(object sender, MouseEventArgs e)
         {
-            var hw = new HardwareForm();
+            var hw = new TechnicForm();
             {
 
             }

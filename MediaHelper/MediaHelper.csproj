@@ -92,11 +92,11 @@
     <Compile Include="StartForm.Designer.cs">
       <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HardwareForm.cs">
+    <Compile Include="TechnicForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HardwareForm.Designer.cs">
-      <DependentUpon>HardwareForm.cs</DependentUpon>
+    <Compile Include="TechnicForm.Designer.cs">
+      <DependentUpon>TechnicForm.cs</DependentUpon>
     </Compile>
     <Compile Include="newProjectForm.cs">
       <SubType>Form</SubType>
@@ -125,8 +125,12 @@
     <Compile Include="StatisticsForm.Designer.cs">
       <DependentUpon>StatisticsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Technic.cs" />
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TechnicForm.resx">
+      <DependentUpon>TechnicForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
