@@ -22,14 +22,19 @@ namespace MediaHelper
         public TechnicForm()
         {
             InitializeComponent();
-            //Technic cam1 = new Technic("Camera","Canon", "66D");
-            //Technic cam2 = new Technic("Camera", "Canon", "70D");
-            //Technic cam3 = new Technic("Camera", "Canon", "80D");
-            //Technic cam4 = new Technic("Camera", "Canon", "60D");
+            Technic cam1 = new Technic("Camera","Canon", "66D");
+            Technic cam2 = new Technic("Camera", "Canon", "70D");
+            Technic cam3 = new Technic("Camera", "Canon", "80D");
+            Technic cam4 = new Technic("Camera", "Canon", "60D");
 
 
             
 
+            WriteToXml(docPath, cam1);
+            EditXml(docPath, cam2);
+            EditXml(docPath, cam3);
+            EditXml(docPath, cam4);
+            ReadFromXml(docPath);
 
         }
         public void WriteToXml(string docPath, Technic item)
@@ -103,6 +108,10 @@ namespace MediaHelper
 
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
 
         private void TechnicForm_Load(object sender, EventArgs e)
         {
@@ -110,9 +119,8 @@ namespace MediaHelper
             
             list.Add(new Technic("Camera","Sony","a6300"));
             list.Add(new Technic("Camera", "Sony", "a6400"));
-            dataGridView1.RowsDefaultCellStyle = dataGridView1.AlternatingRowsDefaultCellStyle;
             dataGridView1.DataSource = list;
-            dataGridView1.BackgroundColor = Color.FromArgb(20, 30, 42);
+            
             // Load data from XML
             DataSet ds = new DataSet();
             ds.ReadXml(docPath);
