@@ -16,19 +16,24 @@ namespace MediaHelper
 {
     public partial class TechnicForm : BaseForm
     {
+
+
+        string docPath = @"D://data.xml";
         public TechnicForm()
         {
             InitializeComponent();
             Technic cam1 = new Technic("Camera","Canon", "66D");
             Technic cam2 = new Technic("Camera", "Canon", "70D");
             Technic cam3 = new Technic("Camera", "Canon", "80D");
+            Technic cam4 = new Technic("Camera", "Canon", "60D");
 
 
-            string docPath = @"D://data.xml";
+            
 
             WriteToXml(docPath, cam1);
             EditXml(docPath, cam2);
             EditXml(docPath, cam3);
+            EditXml(docPath, cam4);
             ReadFromXml(docPath);
 
         }
@@ -71,8 +76,9 @@ namespace MediaHelper
         public void ReadFromXml(string docPath)
         {
             try
-            {
+            { int i = 0; 
                 XDocument doc = XDocument.Load(docPath);
+                
                 //MessageBox.Show(doc.Root.Value);
                 foreach (XElement el in doc.Root.Elements())
                 {
@@ -82,28 +88,43 @@ namespace MediaHelper
                     //выводим в цикле все аттрибуты, заодно смотрим как они себя преобразуют в строку
                     foreach (XAttribute attr in el.Attributes())
                         Console.WriteLine("    {0}", attr);
-                        Console.WriteLine("  Elements:");
                     //выводим в цикле названия всех дочерних элементов и их значения
                     foreach (XElement element in el.Elements())
                         Console.WriteLine("    {0}: {1}", element.Name, element.Value);
 
-
+                    i++;
+                    
 
 
                    
                 }
+
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
                 
             }
-            //return new Technic[3];
 
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void TechnicForm_Load(object sender, EventArgs e)
+        {
+            List < Technic > list = new List<Technic>();
+            
+            list.Add(new Technic("Camera","Sony","a6300"));
+            list.Add(new Technic("Camera", "Sony", "a6400"));
+            dataGridView1.DataSource = list;
+            
+            // Load data from XML
+            DataSet ds = new DataSet();
+            ds.ReadXml(docPath);
+            dataGridView1.DataSource = ds.Tables[0];
 
         }
     }
