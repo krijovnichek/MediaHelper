@@ -20,20 +20,57 @@ namespace MediaHelper
         {
             InitializeComponent();
             Technic cam1 = new Technic("Camera","Canon", "66D");
+            Technic cam2 = new Technic("Camera", "Canon", "70D");
+            Technic cam3 = new Technic("Camera", "Canon", "80D");
+
+
             string docPath = @"D://data.xml";
 
             WriteToXml(docPath, cam1);
+            EditXml(docPath, cam2);
+            EditXml(docPath, cam3);
+            ReadFromXml(docPath);
 
+        }
+        public void WriteToXml(string docPath, Technic item)
+        {
+            /* Запись в XML-файл  */
+            try
+            {
 
-            /*
-             *
-             * 
-             * Чтение XML-файла via LINQ
-             
-             
-             */
+                XDocument doc = new XDocument(
+                 new XElement("technic",
+                 new XElement(item.Type,
+                 new XAttribute("id", "003"),
+                 new XElement("manufacture", item.Manufacturer),
+                 new XElement("model", item.Model))));
 
-            /*try
+                doc.Save(docPath);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+
+            }
+        }
+
+        public void EditXml(string docPath, Technic item)
+        {
+            XDocument doc = XDocument.Load(docPath);
+
+            XElement technic = new XElement(item.Type,
+            new XAttribute("id", "003"),
+            new XElement("manufacture", item.Manufacturer),
+            new XElement("model", item.Model));
+
+            doc.Root.Add(technic);
+            doc.Save(docPath);
+
+        }
+
+        public void ReadFromXml(string docPath)
+        {
+            try
             {
                 XDocument doc = XDocument.Load(docPath);
                 //MessageBox.Show(doc.Root.Value);
@@ -45,47 +82,29 @@ namespace MediaHelper
                     //выводим в цикле все аттрибуты, заодно смотрим как они себя преобразуют в строку
                     foreach (XAttribute attr in el.Attributes())
                         Console.WriteLine("    {0}", attr);
-                    Console.WriteLine("  Elements:");
+                        Console.WriteLine("  Elements:");
                     //выводим в цикле названия всех дочерних элементов и их значения
                     foreach (XElement element in el.Elements())
                         Console.WriteLine("    {0}: {1}", element.Name, element.Value);
-                }
 
+
+
+
+                   
+                }
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
+                
             }
-*/
-
-          
-
-
+            //return new Technic[3];
 
         }
-        public void WriteToXml(string docPath, Technic item)
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            /* Запись в XML-файл  */
-            try
-            {
 
-                XDocument doc = new XDocument(
-                 new XElement("technics",
-                 new XElement(item.Type,
-                 new XAttribute("id", "003"),
-                 new XElement("manufacture", item.Manufacturer),
-                 new XElement("model", item.Model))));
-                doc.Save(docPath);
-
-
-
-
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-
-            }
         }
     }
 
