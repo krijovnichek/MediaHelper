@@ -45,6 +45,7 @@
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.technicBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.addButton = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.technicBindingSource)).BeginInit();
@@ -184,16 +185,29 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(560, 266);
             this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             // 
             // technicBindingSource
             // 
             this.technicBindingSource.DataSource = typeof(MediaHelper.Technic);
+            // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(473, 344);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 23);
+            this.addButton.TabIndex = 11;
+            this.addButton.Text = "Добавить";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Visible = false;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // TechnicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 379);
+            this.Controls.Add(this.addButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.label8);
@@ -231,5 +245,6 @@
         private System.Windows.Forms.ToolStripMenuItem otherToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource technicBindingSource;
+        private System.Windows.Forms.Button addButton;
     }
 }

@@ -22,18 +22,6 @@ namespace MediaHelper
         public TechnicForm()
         {
             InitializeComponent();
-            Technic cam1 = new Technic("Camera","Canon", "66D");
-            Technic cam2 = new Technic("Camera", "Canon", "70D");
-            Technic cam3 = new Technic("Camera", "Canon", "80D");
-            Technic cam4 = new Technic("Camera", "Canon", "60D");
-
-
-            
-
-            WriteToXml(docPath, cam1);
-            EditXml(docPath, cam2);
-            EditXml(docPath, cam3);
-            EditXml(docPath, cam4);
             ReadFromXml(docPath);
 
         }
@@ -67,6 +55,7 @@ namespace MediaHelper
             new XAttribute("id", "003"),
             new XElement("manufacture", item.Manufacturer),
             new XElement("model", item.Model));
+
 
             doc.Root.Add(technic);
             doc.Save(docPath);
@@ -115,16 +104,28 @@ namespace MediaHelper
 
         private void TechnicForm_Load(object sender, EventArgs e)
         {
-            List < Technic > list = new List<Technic>();
-            
-            list.Add(new Technic("Camera","Sony","a6300"));
-            list.Add(new Technic("Camera", "Sony", "a6400"));
-            dataGridView1.DataSource = list;
-            
             // Load data from XML
             DataSet ds = new DataSet();
             ds.ReadXml(docPath);
             dataGridView1.DataSource = ds.Tables[0];
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            addButton.Visible = true;
+            Console.WriteLine(dataGridView1.Rows.Count);
+            Console.WriteLine(dataGridView1.Columns.Count);
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            int last = dataGridView1.Rows.Count - 2;
+
+            string man = dataGridView1.Rows[last].Cells[0].Value.ToString();
+            string model = dataGridView1.Rows[last].Cells[1].Value.ToString();
+            string id = dataGridView1.Rows[last].Cells[2].Value.ToString();
+
+            EditXml(docPath, new Technic("Camera", man, model));
 
         }
     }
