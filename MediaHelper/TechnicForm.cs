@@ -14,11 +14,17 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 using Font = iTextSharp.text.Font;
+using System.Globalization;
+using System.Net;
 
 namespace MediaHelper
 {
-    public partial class TechnicForm : BaseForm
+
+    
+public partial class TechnicForm : BaseForm
     {
+
+
 
 
         private string docPath = @"D://data.xml";
@@ -27,6 +33,8 @@ namespace MediaHelper
         public TechnicForm()
         {
             InitializeComponent();
+            WebClient webClient = new WebClient();
+            webClient.DownloadFile("http://localhost:3000/getxml", docPath);
             ReadFromXml(docPath);
 
         }
@@ -112,6 +120,8 @@ namespace MediaHelper
             // Load data from XML
             DataSet ds = new DataSet();
             ds.ReadXml(docPath);
+            dataGridView1.GridColor = Color.Green;
+            dataGridView1.ForeColor = Color.Green;
             dataGridView1.DataSource = ds.Tables[0];
         }
 
@@ -157,9 +167,17 @@ namespace MediaHelper
             doc.Open();
 
             BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
-            Font font = new Font(bfTimes, 18, iTextSharp.text.Font.NORMAL);
+            //Font font = new Font(bfTimes, 18, iTextSharp.text.Font.NORMAL);
 
-            Paragraph par = new Paragraph("TECH REPORT",font);
+
+            //
+            string ttf = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF");
+            var baseFont = BaseFont.CreateFont(ttf, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            var font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
+
+            //
+            string header = "ОТЧЕТ ПО СОСТОЯНИЮ ТЕХНИКИ НА " + DateTime.Now.ToString("dd.MM.yyyy");
+            Paragraph par = new Paragraph(header,font);
             par.Alignment = Element.ALIGN_CENTER;
             par.SpacingAfter = 30;
 

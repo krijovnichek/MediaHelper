@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<technic>
+  <Camera id="003">
+    <manufacture>Canon</manufacture>
+    <model>66D</model>
+  </Camera>
+  <Camera id="003">
+    <manufacture>Canon</manufacture>
+    <model>70D</model>
+  </Camera>
+  <Camera id="003">
+    <manufacture>Canon</manufacture>
+    <model>80D</model>
+  </Camera>
+  <Camera id="003">
+    <manufacture>Canon</manufacture>
+    <model>60D</model>
+  </Camera>
+  <Camera id="003">
+    <manufacture>Nikon</manufacture>
+    <model>1000D</model>
+  </Camera>
+  <Camera id="003">
+    <manufacture>Sony</manufacture>
+    <model>a6400</model>
+  </Camera>
+  <Camera id="003">
+    <manufacture>Sony</manufacture>
+    <model>a6500</model>
+  </Camera>
+</technic>

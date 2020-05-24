@@ -16,6 +16,7 @@ namespace MediaHelper
         {
             BackColor = Color.FromArgb(20, 30, 42);
             Font = new Font("Roboto", 10, FontStyle.Regular);
+            Icon = new Icon(@"D://helper.ico");
         }
     }
 }
