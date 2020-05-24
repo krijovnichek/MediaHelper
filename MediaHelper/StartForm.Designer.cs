@@ -87,7 +87,7 @@
             // новыйПроектToolStripMenuItem
             // 
             this.новыйПроектToolStripMenuItem.Name = "новыйПроектToolStripMenuItem";
-            this.новыйПроектToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.новыйПроектToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.новыйПроектToolStripMenuItem.Text = "Новый проект";
             this.новыйПроектToolStripMenuItem.Click += new System.EventHandler(this.новыйПроектToolStripMenuItem_Click);
             // 
@@ -159,7 +159,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Roboto Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(15, 74);
+            this.label7.Location = new System.Drawing.Point(12, 74);
             this.label7.Margin = new System.Windows.Forms.Padding(0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(147, 23);

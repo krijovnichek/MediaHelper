@@ -10,7 +10,10 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 
-
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+using Font = iTextSharp.text.Font;
 
 namespace MediaHelper
 {
@@ -18,7 +21,9 @@ namespace MediaHelper
     {
 
 
-        string docPath = @"D://data.xml";
+        private string docPath = @"D://data.xml";
+        private string filePath = @"D://file1.pdf";
+
         public TechnicForm()
         {
             InitializeComponent();
@@ -126,8 +131,84 @@ namespace MediaHelper
             string id = dataGridView1.Rows[last].Cells[2].Value.ToString();
 
             EditXml(docPath, new Technic("Camera", man, model));
+            addButton.Visible = false;
 
         }
+
+        private void np_Click(object sender, EventArgs e)
+        {
+            CreatePDFiText();
+        }
+
+
+        public void CreatePDFiText()
+        {
+            Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
+            try
+            {
+                PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(filePath, FileMode.Create));
+                MessageBox.Show("Файл записан.");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Файл открыт.");
+            }
+            doc.Open();
+
+            BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
+            Font font = new Font(bfTimes, 18, iTextSharp.text.Font.NORMAL);
+
+            Paragraph par = new Paragraph("TECH REPORT",font);
+            par.Alignment = Element.ALIGN_CENTER;
+            par.SpacingAfter = 30;
+
+
+            int ccount = dataGridView1.Columns.Count;
+            int rcount = dataGridView1.Rows.Count;
+
+
+            PdfPTable table = new PdfPTable(ccount);
+
+            try
+            {
+                for (int c = 0; c < ccount; c++)
+                {
+                    table.AddCell(new Phrase(dataGridView1.Columns[c].HeaderText));
+                }
+
+                table.HeaderRows = 1;
+
+                for (int i = 0; i < rcount; i++)
+                {
+                    for (int j = 0; j < ccount; j++)
+                    {
+                        if (dataGridView1.Rows[i].Cells[j].Value != null)
+                        {
+                            table.AddCell(new Phrase(dataGridView1.Rows[i].Cells[j].Value.ToString())); 
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                doc.Add(par);
+                doc.Add(table);
+                doc.Close();
+
+            }
+
+
+            
+
+            
+
+
+        }
+
+
+
+
     }
 
    

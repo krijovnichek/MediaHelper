@@ -46,9 +46,12 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.technicBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.addButton = new System.Windows.Forms.Button();
+            this.np = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.technicBindingSource)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -202,11 +205,35 @@
             this.addButton.Visible = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // np
+            // 
+            this.np.AutoSize = true;
+            this.np.Font = new System.Drawing.Font("Roboto Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.np.ForeColor = System.Drawing.Color.White;
+            this.np.Location = new System.Drawing.Point(16, 10);
+            this.np.Margin = new System.Windows.Forms.Padding(0);
+            this.np.Name = "np";
+            this.np.Size = new System.Drawing.Size(135, 23);
+            this.np.TabIndex = 0;
+            this.np.Text = "TECH REPORT";
+            this.np.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.np.Click += new System.EventHandler(this.np_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(191)))), ((int)(((byte)(117)))));
+            this.panel2.Controls.Add(this.np);
+            this.panel2.Location = new System.Drawing.Point(13, 324);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(162, 43);
+            this.panel2.TabIndex = 12;
+            // 
             // TechnicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 379);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip2);
@@ -223,6 +250,8 @@
             this.menuStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.technicBindingSource)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,5 +275,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource technicBindingSource;
         private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Label np;
+        private System.Windows.Forms.Panel panel2;
     }
 }
