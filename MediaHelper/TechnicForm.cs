@@ -19,23 +19,20 @@ using System.Net;
 
 namespace MediaHelper
 {
-
-    
 public partial class TechnicForm : BaseForm
     {
-
-
-
-
         private string docPath = @"D://data.xml";
+        private string docPath1 = @"D://data1.xml";
         private string filePath = @"D://file1.pdf";
 
         public TechnicForm()
         {
             InitializeComponent();
             WebClient webClient = new WebClient();
-            webClient.DownloadFile("http://localhost:3000/getxml", docPath);
+        //    webClient.DownloadFile("http://localhost:3000/getxml", docPath);
             ReadFromXml(docPath);
+        //    webClient.UploadFile("http://localhost:3000/postxml", docPath1);
+
 
         }
         public void WriteToXml(string docPath, Technic item)
@@ -49,7 +46,9 @@ public partial class TechnicForm : BaseForm
                  new XElement(item.Type,
                  new XAttribute("id", "003"),
                  new XElement("manufacture", item.Manufacturer),
-                 new XElement("model", item.Model))));
+                 new XElement("model", item.Model),
+                 new XElement("shots", item.Shots)
+                 )));
 
                 doc.Save(docPath);
             }
@@ -67,7 +66,8 @@ public partial class TechnicForm : BaseForm
             XElement technic = new XElement(item.Type,
             new XAttribute("id", "003"),
             new XElement("manufacture", item.Manufacturer),
-            new XElement("model", item.Model));
+            new XElement("model", item.Model),
+            new XElement("shots", item.Shots));
 
 
             doc.Root.Add(technic);
@@ -95,26 +95,18 @@ public partial class TechnicForm : BaseForm
                         Console.WriteLine("    {0}: {1}", element.Name, element.Value);
 
                     i++;
-                    
-
-
-                   
                 }
-
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-                
             }
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
         private void TechnicForm_Load(object sender, EventArgs e)
         {
             // Load data from XML
@@ -142,7 +134,6 @@ public partial class TechnicForm : BaseForm
 
             EditXml(docPath, new Technic("Camera", man, model));
             addButton.Visible = false;
-
         }
 
         private void np_Click(object sender, EventArgs e)
@@ -167,8 +158,6 @@ public partial class TechnicForm : BaseForm
             doc.Open();
 
             BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
-            //Font font = new Font(bfTimes, 18, iTextSharp.text.Font.NORMAL);
-
 
             //
             string ttf = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF");
@@ -213,23 +202,7 @@ public partial class TechnicForm : BaseForm
                 doc.Add(par);
                 doc.Add(table);
                 doc.Close();
-
             }
-
-
-            
-
-            
-
-
         }
-
-
-
-
     }
-
-   
-
-
 }
