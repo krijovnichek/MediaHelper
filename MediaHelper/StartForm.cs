@@ -48,12 +48,21 @@ namespace MediaHelper
             this.Refresh();
         }
 
+
         private void newProject()
         {
             Project pr1 = new Project("hi");
             pr1.GetInfo();
-            //label2.Text = pr1.GetInfo();
             var npwin = new newProjectForm();
+            npwin.ShowDialog();
+            npwin.Closed += (s, args) => this.Show();
+            this.Hide();
+        }
+        private void newProject(string[] files)
+        {
+            Project pr1 = new Project("hi");
+            pr1.GetInfo();
+            var npwin = new newProjectForm(files);
             npwin.ShowDialog();
             npwin.Closed += (s, args) => this.Show();
             this.Hide();
@@ -110,5 +119,38 @@ namespace MediaHelper
 
             }
         }
+
+        private void panel2_DragLeave(object sender, EventArgs e)
+        {
+            panel2.BackColor = System.Drawing.Color.FromArgb(31, 191, 117);
+
+        }
+
+        private void panel2_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
+            {
+                e.Effect = DragDropEffects.All;
+                panel2.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+                //31; 191; 117
+
+
+            }
+        }
+
+        private void panel2_DragDrop(object sender, DragEventArgs e)
+        {
+            panel2.BackColor = System.Drawing.Color.FromArgb(31, 191, 117);
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            newProject(files);
+
+            //  Запускаем форму Нового проекта и передаем массив файлов
+
+
+        }
+
+
+        
+
     }
 }

@@ -100,6 +100,7 @@
             // 
             // panel2
             // 
+            this.panel2.AllowDrop = true;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(191)))), ((int)(((byte)(117)))));
             this.panel2.Controls.Add(this.np);
             this.panel2.Location = new System.Drawing.Point(3, 3);
@@ -107,6 +108,9 @@
             this.panel2.Size = new System.Drawing.Size(170, 170);
             this.panel2.TabIndex = 6;
             this.panel2.Click += new System.EventHandler(this.panel2_Click);
+            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel2_DragDrop);
+            this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel2_DragEnter);
+            this.panel2.DragLeave += new System.EventHandler(this.panel2_DragLeave);
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // np

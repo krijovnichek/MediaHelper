@@ -14,9 +14,15 @@ namespace MediaHelper
     public partial class newProjectForm : BaseForm
     {
         bool canI = false;
+        string[] files;
         public newProjectForm()
         {
             InitializeComponent();
+        }
+        public newProjectForm(string[] infiles)
+        {
+            InitializeComponent();
+            files = infiles;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -70,7 +76,7 @@ namespace MediaHelper
         }
 
 
-        private void createDirectory(string path)
+        public void createDirectory(string path)
         {
             try
             {
@@ -89,8 +95,6 @@ namespace MediaHelper
                     Directory.CreateDirectory(path + "\\Source\\Images\\AI");
                     Directory.CreateDirectory(path + "\\Source\\Images\\png");
 
-
-
                 }
                 else
                 {
@@ -102,11 +106,78 @@ namespace MediaHelper
             {
                 // Fail silently
             }
+
+            // Запускаем сортировку тут
+            
+            Sort(files, path);
+
         }
+
+
+        private void Sort(string [] files, string path)
+        {
+            foreach (string file in files) {
+                Console.WriteLine(file);
+                string name = file.Split('\\').Last();
+                Console.WriteLine(name);
+                if (file.EndsWith(".png") || file.EndsWith(".jpeg"))
+                {
+                    // move to img folder
+                    string targetPath = path + "\\Source\\Images\\png\\" + name;
+                    try
+                    {
+                        System.IO.File.Copy(file, targetPath);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Ошибка записи");
+                        throw;
+                    }
+
+                    Console.WriteLine("Все ок");
+                }
+                else if (file.EndsWith(".mp4") || file.EndsWith(".mov"))
+                {
+                    //move to video folder
+                    string targetPath = path + "\\Source\\Video\\"+name;
+                    try
+                    {
+                        System.IO.File.Copy(file, targetPath);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Ошибка записи");
+                        throw;
+                    }
+                }
+                else if (file.EndsWith(".mp3") || file.EndsWith(".wav"))
+                {
+                    //move to audio folder
+                    string targetPath = path + "\\Source\\Audio\\" + name;
+                    try
+                    {
+                        System.IO.File.Copy(file, targetPath);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Ошибка записи");
+                        throw;
+                    }
+                }
+            }
+        }
+
+
+
 
         private void newProjectForm_Load(object sender, EventArgs e)
         {
 
         }
+
+
+
+
+
     }
 }
