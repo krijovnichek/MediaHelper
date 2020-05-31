@@ -86,7 +86,6 @@ namespace MediaHelper
                 {
                     canI = true;
                     Directory.CreateDirectory(path);
-                    Directory.CreateDirectory(path);
                     Directory.CreateDirectory(path + "\\Docs");
                     Directory.CreateDirectory(path + "\\Source");
                     Directory.CreateDirectory(path + "\\Source\\Video");
@@ -116,55 +115,72 @@ namespace MediaHelper
 
         private void Sort(string [] files, string path)
         {
+            List<string> f = new List<String>();
             foreach (string file in files) {
-                Console.WriteLine(file);
+                //Console.WriteLine(file);
                 string name = file.Split('\\').Last();
-                Console.WriteLine(name);
+                //Console.WriteLine(name);
+                string targetPath;
                 if (file.EndsWith(".png") || file.EndsWith(".jpeg"))
                 {
                     // move to img folder
-                    string targetPath = path + "\\Source\\Images\\png\\" + name;
-                    try
-                    {
-                        System.IO.File.Copy(file, targetPath);
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Ошибка записи");
-                        throw;
-                    }
+                    targetPath = path + "\\Source\\Images\\png\\" + name;
+                    MoveToPath(file, targetPath);
 
-                    Console.WriteLine("Все ок");
                 }
                 else if (file.EndsWith(".mp4") || file.EndsWith(".mov"))
                 {
-                    //move to video folder
-                    string targetPath = path + "\\Source\\Video\\"+name;
-                    try
-                    {
-                        System.IO.File.Copy(file, targetPath);
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Ошибка записи");
-                        throw;
-                    }
+                    // move to video folder
+                    targetPath = path + "\\Source\\Video\\" + name;
+                    MoveToPath(file, targetPath);
+
                 }
                 else if (file.EndsWith(".mp3") || file.EndsWith(".wav"))
                 {
-                    //move to audio folder
-                    string targetPath = path + "\\Source\\Audio\\" + name;
-                    try
+                    // move to audio folder
+                    targetPath = path + "\\Source\\Audio\\" + name;
+                    MoveToPath(file, targetPath);
+
+                } else if (Directory.Exists(file)) {
+                    // Если папка, то получаем её файлы и директории и передаем их в рекурсивный вызов
+                    foreach (string i in Directory.GetFiles(file))
                     {
-                        System.IO.File.Copy(file, targetPath);
+                        f.Add(i);
+                        
+
                     }
-                    catch (Exception)
+                    foreach (string d in Directory.GetDirectories(file))
                     {
-                        Console.WriteLine("Ошибка записи");
-                        throw;
+                        f.Add(d);
+
                     }
+
+                     
+                    Sort(f.ToArray(),path);
                 }
+                
             }
+        }
+
+
+        private void MoveToPath (string file, string targetPath)
+        {
+            while (File.Exists(targetPath))
+            {
+                targetPath += "_copy";
+            }
+            
+            try
+            {
+                System.IO.File.Copy(file, targetPath, false);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Ошибка записи");
+                throw;
+            }
+
+            Console.WriteLine("Все ок");
         }
 
 
