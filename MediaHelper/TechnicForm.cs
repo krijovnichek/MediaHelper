@@ -1,25 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 using System.Xml.Linq;
 
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
-using Font = iTextSharp.text.Font;
-using System.Globalization;
 using System.Net;
 
 namespace MediaHelper
 {
-public partial class TechnicForm : BaseForm
+    public partial class TechnicForm : BaseForm
     {
         private string docPath = @"D://data.xml";
         private string docPath1 = @"D://data1.xml";

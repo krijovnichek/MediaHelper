@@ -22,6 +22,8 @@ namespace MediaHelper
         //{
         //    this.Close();
         //}
+        private string docPath = @"D://project_data.xml";
+
 
         private void новыйПроектToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -30,16 +32,26 @@ namespace MediaHelper
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < 5; i++)
+            //TODO
+            List<Project> projects = DocReader.ProjectFromXml(docPath);
+
+            for (int i = 0; i < projects.Count; i++)
             {
-                Label l = new Label();
-                l.Font = new Font("Roboto", 10, FontStyle.Bold);
-                l.ForeColor = Color.White;
-                l.Text = "Project"+i.ToString();
-                this.tableLayoutPanel1.RowCount = ++this.tableLayoutPanel1.RowCount;
-                this.tableLayoutPanel1.Size = new System.Drawing.Size(200, this.tableLayoutPanel1.Size.Height + 100);
-                this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-                this.tableLayoutPanel1.Controls.Add(l, 0, i);
+                Label n = new Label();
+                n.Font = new Font("Roboto", 10, FontStyle.Bold);
+                n.ForeColor = Color.White;
+                n.Text = projects[i].Name;
+
+                Label p = new Label();
+                p.Font = new Font("Roboto", 8, FontStyle.Regular);
+                p.ForeColor = Color.White;
+                p.Text = projects[i].Path;
+
+                //this.tableLayoutPanel1.RowCount = ++this.tableLayoutPanel1.RowCount;
+               // this.tableLayoutPanel1.Size = new System.Drawing.Size(200, this.tableLayoutPanel1.Size.Height + 100);
+            //    this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+                this.tableLayoutPanel1.Controls.Add(n, 0, i);
+                this.tableLayoutPanel1.Controls.Add(p, 1, i);
             }
 
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -148,6 +160,9 @@ namespace MediaHelper
 
 
         }
+
+
+
 
 
         

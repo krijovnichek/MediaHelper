@@ -6,17 +6,36 @@ using System.Threading.Tasks;
 
 namespace MediaHelper
 {
-    class Project
+    public class Project
     {
+
+
+        public string Name { get; set; }
+        public string Path { get; set; }
+
+        public Project()
+        {
+
+        }
         public Project(string n) { name = n; }
 
+        public Project(string name, string path)
+        {
+            Name = name;
+            Path = path;
+        }
 
 
-        public string name;
+
+        private string name;
+
         public string GetInfo()
         {
             return name;
         }
+
+
+
 
 
 

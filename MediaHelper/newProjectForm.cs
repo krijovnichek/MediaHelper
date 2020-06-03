@@ -8,16 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace MediaHelper
 {
     public partial class newProjectForm : BaseForm
     {
+        private string docPath = @"D://project_data.xml";
+
         bool canI = false;
-        string[] files;
+        string[] files = { };
         public newProjectForm()
         {
             InitializeComponent();
+            //            WriteToXml(docPath);
         }
         public newProjectForm(string[] infiles)
         {
@@ -32,6 +36,8 @@ namespace MediaHelper
                 createDirectory(fullPath);
                 if (canI)
                 {
+                    //Кидаем в XML новый проект
+                    EditXml(docPath, new Project(projectNameTextBox.Text, fullPath));
                     ProjectWindow win = new ProjectWindow(projectNameTextBox.Text, dirLabel.Text);
                     this.Close();
                     win.Show();
@@ -107,8 +113,9 @@ namespace MediaHelper
             }
 
             // Запускаем сортировку тут
-            
-            Sort(files, path);
+            if (files.Length != 0) {
+                Sort(files, path);
+            }
 
         }
 
@@ -190,6 +197,79 @@ namespace MediaHelper
         {
 
         }
+
+
+
+        public void EditXml(string docPath, Project project)
+        {
+            XDocument doc = XDocument.Load(docPath);
+
+            XElement pr = new XElement(
+             new XElement("project",
+                 new XAttribute("name", project.Name),
+                 new XElement("path", project.Path)));
+
+            doc.Root.Add(pr);
+            doc.Save(docPath);
+
+        }
+
+        public void WriteToXml(string docPath)
+        {
+            /* Запись в XML-файл  */
+            try
+            {
+
+                XDocument doc = new XDocument(
+                 new XElement("projects",
+                 new XElement("project",
+                 new XAttribute("name", "имя проекта"),
+                 new XElement("path", "da")
+                 )));
+
+                doc.Save(docPath);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+
+            }
+        }
+
+
+        public void ReadFromXml(string docPath)
+        {
+            try
+            {
+                int i = 0;
+                XDocument doc = XDocument.Load(docPath);
+
+                //MessageBox.Show(doc.Root.Value);
+                foreach (XElement el in doc.Root.Elements())
+                {
+                    //Выводим имя элемента и значение аттрибута id
+                    Console.WriteLine("{0}", el.Name);
+                    Console.WriteLine("  Attributes:");
+                    //выводим в цикле все аттрибуты, заодно смотрим как они себя преобразуют в строку
+                    foreach (XAttribute attr in el.Attributes())
+                        Console.WriteLine("    {0}", attr);
+                    //выводим в цикле названия всех дочерних элементов и их значения
+                    foreach (XElement element in el.Elements())
+                        Console.WriteLine("    {0}: {1}", element.Name, element.Value);
+
+                    i++;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+
+
+
+
 
 
 
