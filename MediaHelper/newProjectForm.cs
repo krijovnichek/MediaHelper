@@ -33,7 +33,7 @@ namespace MediaHelper
                 if (canI)
                 {
                     ProjectWindow win = new ProjectWindow(projectNameTextBox.Text, dirLabel.Text);
-                    this.Hide();
+                    this.Close();
                     win.Show();
                 }
             }
