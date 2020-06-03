@@ -38,11 +38,13 @@ namespace MediaHelper
             for (int i = 0; i < projects.Count; i++)
             {
                 Label n = new Label();
+                n.Width = 350;
                 n.Font = new Font("Roboto", 10, FontStyle.Bold);
                 n.ForeColor = Color.White;
                 n.Text = projects[i].Name;
 
                 Label p = new Label();
+                p.Width = 350;
                 p.Font = new Font("Roboto", 8, FontStyle.Regular);
                 p.ForeColor = Color.White;
                 p.Text = projects[i].Path;
