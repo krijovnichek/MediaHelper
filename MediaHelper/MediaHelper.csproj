@@ -112,6 +112,7 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DocReader.cs" />
     <Compile Include="StartForm.cs">
       <SubType>Form</SubType>
     </Compile>

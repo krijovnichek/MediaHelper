@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+
 
 namespace MediaHelper
 {
@@ -30,7 +26,7 @@ namespace MediaHelper
 
             int fCount = Directory.GetFiles(dir, ".", SearchOption.AllDirectories).Count();
             filesCount.Text = fCount.ToString();
-            sizeLabel.Text = GetDirectorySize(dir).ToString()+ "bytes";
+            sizeLabel.Text = GetDirectorySize(dir).ToString() + "bytes";
         }
 
 
