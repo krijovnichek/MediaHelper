@@ -230,6 +230,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(170, 170);
             this.panel4.TabIndex = 8;
+            this.panel4.Click += new System.EventHandler(this.panel4_Click);
             // 
             // label2
             // 
@@ -243,6 +244,7 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "ТЕХ. ЗАДАНИЕ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.DoubleClick += new System.EventHandler(this.label2_DoubleClick);
             // 
             // ProjectWindow
             // 

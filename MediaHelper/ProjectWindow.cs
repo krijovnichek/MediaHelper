@@ -13,7 +13,7 @@ namespace MediaHelper
         {
             InitializeComponent();
         }
-
+        string Path = "None";
         public ProjectWindow(string projectName, string _dirLabel)
         {
 
@@ -31,6 +31,7 @@ namespace MediaHelper
             }
             filesCount.Text = fCount.ToString();
             sizeLabel.Text = GetDirectorySize(dir).ToString() + "bytes";
+            Path = dir;
         }
 
 
@@ -67,7 +68,28 @@ namespace MediaHelper
             return size;
         }
 
+        private void panel4_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void label2_DoubleClick(object sender, EventArgs e)
+        {
+            // open TZ doc
+            string dir = Path + "\\Docs";
+            Console.WriteLine(dir);
+            string[] files = Directory.GetFiles(dir);
+            foreach (string f in files)
+            {
+                string t = f.Split('\\').Last();
+                Console.WriteLine(t);
+                if (t.StartsWith("TZ_")) {
+                    // Открываем файл c ТЗ
+                    System.Diagnostics.Process.Start(f);
+                }
+                else MessageBox.Show("НЕТ ТЗ");
+            }
+
+        }
     }
 }

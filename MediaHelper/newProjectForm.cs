@@ -148,7 +148,8 @@ namespace MediaHelper
                     targetPath = path + "\\Source\\Audio\\" + name;
                     MoveToPath(file, targetPath);
 
-                } else if (Directory.Exists(file)) {
+                } 
+                else if (Directory.Exists(file)) {
                     // Если папка, то получаем её файлы и директории и передаем их в рекурсивный вызов
                     foreach (string i in Directory.GetFiles(file))
                     {
@@ -165,7 +166,14 @@ namespace MediaHelper
                      
                     Sort(f.ToArray(),path);
                 }
-                
+                else if (file.EndsWith(".docx") || file.EndsWith(".doc") || file.EndsWith(".pdf"))
+                {
+                    // move to audio folder
+                    targetPath = path + "\\Docs\\" + "TZ_" + name;
+                    MoveToPath(file, targetPath);
+
+                }
+
             }
         }
 
