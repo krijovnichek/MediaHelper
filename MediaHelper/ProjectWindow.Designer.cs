@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectWindow));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.projectNameTextBox = new System.Windows.Forms.TextBox();
@@ -75,6 +76,7 @@
             // 
             this.projectNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(42)))));
             this.projectNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.projectNameTextBox.CausesValidation = false;
             this.projectNameTextBox.Font = new System.Drawing.Font("Roboto", 18.25F);
             this.projectNameTextBox.ForeColor = System.Drawing.Color.White;
             this.projectNameTextBox.Location = new System.Drawing.Point(24, 27);
@@ -82,6 +84,7 @@
             this.projectNameTextBox.Size = new System.Drawing.Size(224, 30);
             this.projectNameTextBox.TabIndex = 1;
             this.projectNameTextBox.Text = "Project Name";
+            this.projectNameTextBox.TextChanged += new System.EventHandler(this.projectNameTextBox_TextChanged);
             // 
             // panel2
             // 
@@ -259,6 +262,7 @@
             this.Controls.Add(this.projectNameTextBox);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Roboto", 8.25F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProjectWindow";
             this.Text = "ProjectWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProjectWindow_FormClosing);

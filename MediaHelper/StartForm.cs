@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace MediaHelper
 {
@@ -185,10 +186,15 @@ namespace MediaHelper
             try { 
                 t = int.Parse(label.Name.Split('_')[1]);
 
-                /* MessageBox.Show(listlLabels[t].Text);
-                 MessageBox.Show(listlLabelName[t].Text);*/
-                string tmp = '\\'+listlLabelName[t].Text;
-                path = listlLabels[t].Text.TrimEnd(tmp.ToCharArray());
+                if (Directory.Exists(listlLabels[t].Text))
+                {
+                    string tmp = '\\' + listlLabelName[t].Text;
+                    path = listlLabels[t].Text.TrimEnd(tmp.ToCharArray());
+                }
+                else {
+                    MessageBox.Show("Проект не найден");
+                };
+                
 
             }
             catch (Exception err)
@@ -196,8 +202,9 @@ namespace MediaHelper
                 Console.WriteLine(err.ToString());
             }
 
-            if (t!=-1 && path !="None")
+            if (t!=-1 && path !="None" && Directory.Exists(path) )
             {
+                Console.WriteLine(path + "ЫЫЫ");
                 ProjectWindow win = new ProjectWindow(listlLabelName[t].Text, path);
                 win.Show();
                 this.Hide();

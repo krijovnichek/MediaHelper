@@ -8,6 +8,7 @@ namespace MediaHelper
 {
     public class Technic
     {
+        public int ID { get; set; }
         public string Type { get; set; }
         public string Manufacturer { get; set; }
         public string Model { get; set; }
@@ -26,7 +27,18 @@ namespace MediaHelper
             Manufacturer = manufacturer;
             Model = model;
             Shots = 0;
-            Limit = -1;
+            Limit = 100000;
+            
+        }
+
+        public Technic(int id, string type, string manufacturer, string model, int shots = 0)
+        {
+            Type = type;
+            Manufacturer = manufacturer;
+            Model = model;
+            Shots = 0;
+            Limit = 100000;
+            ID = id;
 
         }
 

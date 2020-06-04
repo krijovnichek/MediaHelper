@@ -32,6 +32,9 @@ namespace MediaHelper
             filesCount.Text = fCount.ToString();
             sizeLabel.Text = GetDirectorySize(dir).ToString() + "bytes";
             Path = dir;
+            ToolTip t = new ToolTip();
+            t.SetToolTip(panel4, "Открыть техническое задание");
+
         }
 
 
@@ -47,24 +50,23 @@ namespace MediaHelper
 
         static long GetDirectorySize(string p)
         {
-            // 1.
-            // Get array of all file names.
-
-
-            string[] a = Directory.GetFiles(p, "*.*");
-
-            // 2.
-            // Calculate total bytes of all files in a loop.
             long size = 0;
-            foreach (string name in a)
+            try
             {
-                // 3.
-                // Use FileInfo to get length of each file.
-                FileInfo info = new FileInfo(name);
-                size += info.Length;
+
+                string[] a = Directory.GetFiles(p, "*.*");
+
+                
+                size = 0;
+                foreach (string name in a)
+                {
+                   
+                    FileInfo info = new FileInfo(name);
+                    size += info.Length;
+                }
             }
-            // 4.
-            // Return total size
+            catch (Exception e) { Console.WriteLine(e.ToString()); }
+
             return size;
         }
 
@@ -77,19 +79,32 @@ namespace MediaHelper
         {
             // open TZ doc
             string dir = Path + "\\Docs";
-            Console.WriteLine(dir);
-            string[] files = Directory.GetFiles(dir);
-            foreach (string f in files)
+            //Console.WriteLine(dir); //
+            try
             {
-                string t = f.Split('\\').Last();
-                Console.WriteLine(t);
-                if (t.StartsWith("TZ_")) {
-                    // Открываем файл c ТЗ
-                    System.Diagnostics.Process.Start(f);
+                string[] files = Directory.GetFiles(dir);
+                foreach (string f in files)
+                {
+                    string t = f.Split('\\').Last();
+                    Console.WriteLine(t);
+                    if (t.StartsWith("TZ_"))
+                    {
+                        // Открываем файл c ТЗ
+                        System.Diagnostics.Process.Start(f);
+                    }
+                    else MessageBox.Show("НЕТ ТЗ");
                 }
-                else MessageBox.Show("НЕТ ТЗ");
             }
+            catch (DirectoryNotFoundException)
+            {
+                Console.WriteLine("DirectoryNotFoundException");
+                MessageBox.Show("Ошибка директории");
+            }
+        }
 
+        private void projectNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            // ИЗМЕНЕНИЕ НАЗВАНИЯ В XML
         }
     }
 }
