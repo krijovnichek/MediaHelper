@@ -19,13 +19,19 @@
   <Camera id="003">
     <manufacture>Nikon</manufacture>
     <model>1000D</model>
+    <shots>12415</shots>
+    <limit>100000</limit>
   </Camera>
   <Camera id="003">
     <manufacture>Sony</manufacture>
     <model>a611100</model>
+    <shots>44524</shots>
+    <limit>100000</limit>
   </Camera>
   <Camera id="003">
     <manufacture>Sony</manufacture>
     <model>a6500</model>
+    <shots>4454</shots>
+    <limit>100000</limit>
   </Camera>
 </technic>

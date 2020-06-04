@@ -41,7 +41,7 @@ namespace MediaHelper
             {
                 Label n = new Label();
                 n.Name = "prj_" + i.ToString(); 
-                n.Width = 350;
+                n.Width = 300;
                 n.Font = new Font("Roboto", 10, FontStyle.Bold);
                 n.ForeColor = Color.White;
                 n.Text = projects[i].Name;
@@ -50,7 +50,7 @@ namespace MediaHelper
 
                 Label p = new Label();
                 p.Name = "path_" + i.ToString();
-                p.Width = 350;
+                p.Width = 300;
                 p.Font = new Font("Roboto", 8, FontStyle.Regular);
                 p.ForeColor = Color.White;
                 p.Text = projects[i].Path;

@@ -58,14 +58,14 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(516, 12);
+            this.panel1.Location = new System.Drawing.Point(383, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(272, 426);
+            this.panel1.Size = new System.Drawing.Size(175, 426);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(14, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.TabIndex = 0;
@@ -192,7 +192,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(569, 24);
             this.menuStrip2.TabIndex = 4;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -226,9 +226,9 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(121)))), ((int)(((byte)(97)))));
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(340, 39);
+            this.panel4.Location = new System.Drawing.Point(15, 79);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(170, 170);
+            this.panel4.Size = new System.Drawing.Size(170, 61);
             this.panel4.TabIndex = 8;
             this.panel4.Click += new System.EventHandler(this.panel4_Click);
             // 
@@ -237,7 +237,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Roboto Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 74);
+            this.label2.Location = new System.Drawing.Point(12, 21);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 23);
@@ -251,7 +251,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(42)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(569, 450);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.projectInfoLabel);
