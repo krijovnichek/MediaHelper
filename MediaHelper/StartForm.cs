@@ -47,6 +47,7 @@ namespace MediaHelper
                 n.ForeColor = Color.White;
                 n.Text = projects[i].Name;
                 n.Click += new EventHandler(this.label_Click);
+                n.Cursor = Cursors.Hand;
                 listlLabelName.Add(n);
 
                 Label p = new Label();
@@ -56,6 +57,8 @@ namespace MediaHelper
                 p.ForeColor = Color.White;
                 p.Text = projects[i].Path;
                 p.Click += new EventHandler(this.label_Click);
+                p.Cursor = Cursors.Hand;
+
                 listlLabels.Add(p);
 
 
@@ -65,6 +68,9 @@ namespace MediaHelper
                 this.tableLayoutPanel1.Controls.Add(n, 0, i);
                 this.tableLayoutPanel1.Controls.Add(p, 1, i);
             }
+
+            panel2.Cursor = Cursors.Hand;
+            hardwarePanel.Cursor = Cursors.Hand;
 
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -206,19 +212,35 @@ namespace MediaHelper
             {
                 Console.WriteLine(path + "ЫЫЫ");
                 ProjectWindow win = new ProjectWindow(listlLabelName[t].Text, path);
+                win.Closed += (s, args) => this.Show();
                 win.Show();
                 this.Hide();
             }
 
         }
 
-       
+        private void hardwarePanel_MouseHover(object sender, EventArgs e)
+        {
+            hardwarePanel.BackColor = System.Drawing.Color.FromArgb(102, 191, 255);
 
+        }
 
+        private void panel2_MouseHover(object sender, EventArgs e)
+        {
+            panel2.BackColor = System.Drawing.Color.FromArgb(53, 222, 143);
 
+        }
 
+        private void panel2_MouseLeave(object sender, EventArgs e)
+        {
+            panel2.BackColor = System.Drawing.Color.FromArgb(31, 191, 117);
 
+        }
 
+        private void hardwarePanel_MouseLeave(object sender, EventArgs e)
+        {
+            hardwarePanel.BackColor = System.Drawing.Color.FromArgb(51, 169, 255);
 
+        }
     }
 }

@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectWindow));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.projectNameTextBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,6 +47,7 @@
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.projectNameTextBox = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -71,20 +71,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // projectNameTextBox
-            // 
-            this.projectNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(42)))));
-            this.projectNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.projectNameTextBox.CausesValidation = false;
-            this.projectNameTextBox.Font = new System.Drawing.Font("Roboto", 18.25F);
-            this.projectNameTextBox.ForeColor = System.Drawing.Color.White;
-            this.projectNameTextBox.Location = new System.Drawing.Point(24, 27);
-            this.projectNameTextBox.Name = "projectNameTextBox";
-            this.projectNameTextBox.Size = new System.Drawing.Size(224, 30);
-            this.projectNameTextBox.TabIndex = 1;
-            this.projectNameTextBox.Text = "Project Name";
-            this.projectNameTextBox.TextChanged += new System.EventHandler(this.projectNameTextBox_TextChanged);
             // 
             // panel2
             // 
@@ -249,17 +235,28 @@
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.DoubleClick += new System.EventHandler(this.label2_DoubleClick);
             // 
+            // projectNameTextBox
+            // 
+            this.projectNameTextBox.AutoSize = true;
+            this.projectNameTextBox.Font = new System.Drawing.Font("Roboto", 20F);
+            this.projectNameTextBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.projectNameTextBox.Location = new System.Drawing.Point(18, 40);
+            this.projectNameTextBox.Name = "projectNameTextBox";
+            this.projectNameTextBox.Size = new System.Drawing.Size(88, 33);
+            this.projectNameTextBox.TabIndex = 9;
+            this.projectNameTextBox.Text = "label3";
+            // 
             // ProjectWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(569, 450);
+            this.Controls.Add(this.projectNameTextBox);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.projectInfoLabel);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.projectNameTextBox);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Roboto", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -284,7 +281,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox projectNameTextBox;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label filesCount;
         private System.Windows.Forms.Label label4;
@@ -301,5 +297,6 @@
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label projectNameTextBox;
     }
 }

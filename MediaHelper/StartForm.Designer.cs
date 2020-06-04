@@ -106,6 +106,8 @@
             this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel2_DragEnter);
             this.panel2.DragLeave += new System.EventHandler(this.panel2_DragLeave);
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.panel2.MouseLeave += new System.EventHandler(this.panel2_MouseLeave);
+            this.panel2.MouseHover += new System.EventHandler(this.panel2_MouseHover);
             // 
             // np
             // 
@@ -152,6 +154,8 @@
             this.hardwarePanel.TabIndex = 8;
             this.hardwarePanel.Click += new System.EventHandler(this.panel5_Click);
             this.hardwarePanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseClick);
+            this.hardwarePanel.MouseLeave += new System.EventHandler(this.hardwarePanel_MouseLeave);
+            this.hardwarePanel.MouseHover += new System.EventHandler(this.hardwarePanel_MouseHover);
             // 
             // label3
             // 

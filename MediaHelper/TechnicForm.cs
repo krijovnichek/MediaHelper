@@ -37,7 +37,7 @@ namespace MediaHelper
                 XDocument doc = new XDocument(
                  new XElement("technic",
                  new XElement(item.Type,
-                 new XAttribute("id", "5"),
+                 new XAttribute("id", "1"),
                  new XElement("manufacture", item.Manufacturer),
                  new XElement("model", item.Model),
                  new XElement("shots", item.Shots)
