@@ -29,6 +29,8 @@ namespace MediaHelper
         {
             newProject();
         }
+        List<Control> listlLabels = new List<Control>();
+        List<Control> listlLabelName = new List<Control>();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -38,20 +40,27 @@ namespace MediaHelper
             for (int i = 0; i < projects.Count; i++)
             {
                 Label n = new Label();
+                n.Name = "prj_" + i.ToString(); 
                 n.Width = 350;
                 n.Font = new Font("Roboto", 10, FontStyle.Bold);
                 n.ForeColor = Color.White;
                 n.Text = projects[i].Name;
+                n.Click += new EventHandler(this.label_Click);
+                listlLabelName.Add(n);
 
                 Label p = new Label();
+                p.Name = "path_" + i.ToString();
                 p.Width = 350;
                 p.Font = new Font("Roboto", 8, FontStyle.Regular);
                 p.ForeColor = Color.White;
                 p.Text = projects[i].Path;
+                p.Click += new EventHandler(this.label_Click);
+                listlLabels.Add(p);
+
 
                 //this.tableLayoutPanel1.RowCount = ++this.tableLayoutPanel1.RowCount;
-               // this.tableLayoutPanel1.Size = new System.Drawing.Size(200, this.tableLayoutPanel1.Size.Height + 100);
-            //    this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+                // this.tableLayoutPanel1.Size = new System.Drawing.Size(200, this.tableLayoutPanel1.Size.Height + 100);
+                //    this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
                 this.tableLayoutPanel1.Controls.Add(n, 0, i);
                 this.tableLayoutPanel1.Controls.Add(p, 1, i);
             }
@@ -62,6 +71,10 @@ namespace MediaHelper
             this.Refresh();
         }
 
+        private void N_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         private void newProject()
         {
@@ -164,10 +177,41 @@ namespace MediaHelper
         }
 
 
+        private void label_Click(object sender, EventArgs e)
+        {
+            int t = -1;
+            string path = "None";
+            Label label = sender as Label;
+            try { 
+                t = int.Parse(label.Name.Split('_')[1]);
+
+                /* MessageBox.Show(listlLabels[t].Text);
+                 MessageBox.Show(listlLabelName[t].Text);*/
+                string tmp = '\\'+listlLabelName[t].Text;
+                path = listlLabels[t].Text.TrimEnd(tmp.ToCharArray());
+
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.ToString());
+            }
+
+            if (t!=-1 && path !="None")
+            {
+                ProjectWindow win = new ProjectWindow(listlLabelName[t].Text, path);
+                win.Show();
+                this.Hide();
+            }
+
+        }
+
+       
 
 
 
-        
+
+
+
 
     }
 }

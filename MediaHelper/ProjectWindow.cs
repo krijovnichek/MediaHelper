@@ -22,9 +22,13 @@ namespace MediaHelper
             projectNameTextBox.Text = projectName;
             string dir = _dirLabel + '\\' + projectName;
             dirLabel.Text = dir;
-           
+            int fCount = 0;
 
-            int fCount = Directory.GetFiles(dir, ".", SearchOption.AllDirectories).Count();
+            try {fCount = Directory.GetFiles(dir, ".", SearchOption.AllDirectories).Count(); }
+            catch (DirectoryNotFoundException err)
+            {
+                MessageBox.Show("Directory not found");
+            }
             filesCount.Text = fCount.ToString();
             sizeLabel.Text = GetDirectorySize(dir).ToString() + "bytes";
         }
@@ -44,6 +48,8 @@ namespace MediaHelper
         {
             // 1.
             // Get array of all file names.
+
+
             string[] a = Directory.GetFiles(p, "*.*");
 
             // 2.
