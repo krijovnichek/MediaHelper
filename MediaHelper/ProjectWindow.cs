@@ -30,7 +30,10 @@ namespace MediaHelper
                 MessageBox.Show("Directory not found");
             }
             filesCount.Text = fCount.ToString();
-            sizeLabel.Text = GetDirectorySize(dir).ToString() + "bytes";
+
+            double s = Math.Round(GetDirectorySize(dir)/1024/1024, 2, MidpointRounding.ToEven );
+            
+            sizeLabel.Text = s.ToString() + " Mb";
             Path = dir;
             ToolTip t = new ToolTip();
             t.SetToolTip(panel4, "Открыть техническое задание");
@@ -48,13 +51,13 @@ namespace MediaHelper
             //Program.fClose();
         }
 
-        static long GetDirectorySize(string p)
+        static double GetDirectorySize(string p)
         {
-            long size = 0;
+            double size = 0;
             try
             {
 
-                string[] a = Directory.GetFiles(p, "*.*");
+                string[] a = Directory.GetFiles(p, "*.*", SearchOption.AllDirectories);
 
                 
                 size = 0;
@@ -67,6 +70,7 @@ namespace MediaHelper
             }
             catch (Exception e) { Console.WriteLine(e.ToString()); }
 
+            //size = Math.Round(size / 1024 / 1024,2, MidpointRounding.ToEven);
             return size;
         }
 
@@ -86,13 +90,12 @@ namespace MediaHelper
                 foreach (string f in files)
                 {
                     string t = f.Split('\\').Last();
-                    Console.WriteLine(t);
                     if (t.StartsWith("TZ_"))
                     {
                         // Открываем файл c ТЗ
                         System.Diagnostics.Process.Start(f);
                     }
-                    else MessageBox.Show("НЕТ ТЗ");
+                    else { MessageBox.Show("НЕТ ТЗ"); }
                 }
             }
             catch (DirectoryNotFoundException)
@@ -105,6 +108,16 @@ namespace MediaHelper
         private void projectNameTextBox_TextChanged(object sender, EventArgs e)
         {
             // ИЗМЕНЕНИЕ НАЗВАНИЯ В XML
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

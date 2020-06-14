@@ -8,12 +8,14 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 using System.Net;
+using System.Linq;
 
 namespace MediaHelper
 {
     public partial class TechnicForm : BaseForm
     {
         private string docPath = @"D://data.xml";
+        private string docPath_test = @"D://data_T.xml";
         private string docPath1 = @"D://data1.xml";
         private string filePath = @"D://file1.pdf";
         int MaxId =0;
@@ -24,12 +26,16 @@ namespace MediaHelper
             WebClient webClient = new WebClient();
         //    webClient.DownloadFile("http://localhost:3000/getxml", docPath);
             ReadFromXml(docPath);
-        //    webClient.UploadFile("http://localhost:3000/postxml", docPath1);
+            //    webClient.UploadFile("http://localhost:3000/postxml", docPath1);
+
 
 
         }
+
+        
         public void WriteToXml(string docPath, Technic item)
         {
+            
             /* Запись в XML-файл  */
             try
             {
@@ -67,6 +73,7 @@ namespace MediaHelper
             doc.Save(docPath);
 
         }
+        
 
         public void ReadFromXml(string docPath)
         {
@@ -96,6 +103,9 @@ namespace MediaHelper
             }
         }
 
+
+
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -118,9 +128,19 @@ namespace MediaHelper
             int prevId = Int32.Parse(dataGridView1.Rows[last - 1].Cells[3].Value.ToString());
             dataGridView1.Rows[last].Cells[3].Value = (prevId + 1).ToString();
             MaxId = prevId + 1;
-            Console.WriteLine(dataGridView1.Rows.Count);
-            Console.WriteLine(dataGridView1.Columns.Count);
         }
+
+       /* public void ReWriteXML(string docPath, Technic item)
+        {
+            XDocument doc = XDocument.Load(docPath);
+            var deleteQuery = from r in doc.Descendants("technic") where r.Element("model").Value == txt.Text.Trim() select r;
+            foreach (var qry in deleteQuery)
+            {
+                qry.Element("Camera").Remove();
+                
+            }
+            doc.Save(docPath_test);
+        }*/
 
         private void addButton_Click(object sender, EventArgs e)
         {

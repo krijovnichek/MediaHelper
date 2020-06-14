@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using System.IO;
 
 namespace MediaHelper
@@ -19,11 +13,8 @@ namespace MediaHelper
             InitializeComponent();
         }
 
-        //public new void Close()
-        //{
-        //    this.Close();
-        //}
         private string docPath = @"D://project_data.xml";
+
 
 
         private void новыйПроектToolStripMenuItem_Click(object sender, EventArgs e)
@@ -61,10 +52,6 @@ namespace MediaHelper
 
                 listlLabels.Add(p);
 
-
-                //this.tableLayoutPanel1.RowCount = ++this.tableLayoutPanel1.RowCount;
-                // this.tableLayoutPanel1.Size = new System.Drawing.Size(200, this.tableLayoutPanel1.Size.Height + 100);
-                //    this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
                 this.tableLayoutPanel1.Controls.Add(n, 0, i);
                 this.tableLayoutPanel1.Controls.Add(p, 1, i);
             }
@@ -116,7 +103,6 @@ namespace MediaHelper
             var st = new StatisticsForm();
             st.Show();
             this.Hide();
-          /*  st.Closed += (s, args) => this.Show();*/
 
         }
 
@@ -166,20 +152,17 @@ namespace MediaHelper
             {
                 e.Effect = DragDropEffects.All;
                 panel2.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-                //31; 191; 117
-
 
             }
         }
 
         private void panel2_DragDrop(object sender, DragEventArgs e)
         {
+            //  Запускаем форму Нового проекта и передаем массив файлов
+
             panel2.BackColor = System.Drawing.Color.FromArgb(31, 191, 117);
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             newProject(files);
-
-            //  Запускаем форму Нового проекта и передаем массив файлов
-
 
         }
 
@@ -224,6 +207,11 @@ namespace MediaHelper
             hardwarePanel.BackColor = System.Drawing.Color.FromArgb(102, 191, 255);
 
         }
+        private void hardwarePanel_MouseLeave(object sender, EventArgs e)
+        {
+            hardwarePanel.BackColor = System.Drawing.Color.FromArgb(51, 169, 255);
+
+        }
 
         private void panel2_MouseHover(object sender, EventArgs e)
         {
@@ -236,11 +224,6 @@ namespace MediaHelper
             panel2.BackColor = System.Drawing.Color.FromArgb(31, 191, 117);
 
         }
-
-        private void hardwarePanel_MouseLeave(object sender, EventArgs e)
-        {
-            hardwarePanel.BackColor = System.Drawing.Color.FromArgb(51, 169, 255);
-
-        }
+        
     }
 }

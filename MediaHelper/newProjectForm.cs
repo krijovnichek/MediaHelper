@@ -95,10 +95,11 @@ namespace MediaHelper
                     Directory.CreateDirectory(path + "\\Docs");
                     Directory.CreateDirectory(path + "\\Source");
                     Directory.CreateDirectory(path + "\\Source\\Video");
+                    Directory.CreateDirectory(path + "\\Source\\Others");
                     Directory.CreateDirectory(path + "\\Source\\Audio");
                     Directory.CreateDirectory(path + "\\Source\\Images");
                     Directory.CreateDirectory(path + "\\Source\\Images\\AI");
-                    Directory.CreateDirectory(path + "\\Source\\Images\\png");
+                    //Directory.CreateDirectory(path + "\\Source\\Images\\png");
 
                 }
                 else
@@ -128,29 +129,29 @@ namespace MediaHelper
                 string name = file.Split('\\').Last();
                 //Console.WriteLine(name);
                 string targetPath;
-                if (file.EndsWith(".png") || file.EndsWith(".jpeg"))
+                if (file.EndsWith(".png") || file.EndsWith(".jpeg") || file.EndsWith(".jpg"))
                 {
-                    // move to img folder
-                    targetPath = path + "\\Source\\Images\\png\\" + name;
+                    // изображения
+                    targetPath = path + "\\Source\\Images\\" + name;
                     MoveToPath(file, targetPath);
 
                 }
                 else if (file.EndsWith(".mp4") || file.EndsWith(".mov"))
                 {
-                    // move to video folder
+                    // видео
                     targetPath = path + "\\Source\\Video\\" + name;
                     MoveToPath(file, targetPath);
 
                 }
                 else if (file.EndsWith(".mp3") || file.EndsWith(".wav"))
                 {
-                    // move to audio folder
+                    // аудио
                     targetPath = path + "\\Source\\Audio\\" + name;
                     MoveToPath(file, targetPath);
 
                 } 
                 else if (Directory.Exists(file)) {
-                    // Если папка, то получаем её файлы и директории и передаем их в рекурсивный вызов
+                   
                     foreach (string i in Directory.GetFiles(file))
                     {
                         f.Add(i);
@@ -170,6 +171,12 @@ namespace MediaHelper
                 {
                     // move to audio folder
                     targetPath = path + "\\Docs\\" + "TZ_" + name;
+                    MoveToPath(file, targetPath);
+
+                }
+                else
+                {
+                    targetPath = path + "\\Docs\\Others\\" + name;
                     MoveToPath(file, targetPath);
 
                 }

@@ -59,9 +59,9 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(383, 27);
+            this.panel1.Location = new System.Drawing.Point(411, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(175, 426);
+            this.panel1.Size = new System.Drawing.Size(147, 426);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -220,6 +220,7 @@
             this.panel4.Size = new System.Drawing.Size(170, 61);
             this.panel4.TabIndex = 8;
             this.panel4.Click += new System.EventHandler(this.panel4_Click);
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // label2
             // 
@@ -233,6 +234,7 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "ТЕХ. ЗАДАНИЕ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             this.label2.DoubleClick += new System.EventHandler(this.label2_DoubleClick);
             // 
             // projectNameTextBox
