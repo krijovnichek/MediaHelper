@@ -16,7 +16,7 @@ namespace MediaHelper
         public int Limit { get; set; }
 
 
-        public Technic()
+        public Technic(int v)
         {
 
         }

@@ -15,8 +15,10 @@ namespace MediaHelper
     public partial class TechnicForm : BaseForm
     {
         private string docPath = @"D://data.xml";
-        private string docPath_test = @"D://data_T.xml";
         private string docPath1 = @"D://data1.xml";
+        private string docPath_test1 = @"D://data_test1AAA.xml";
+        private string docPath_new = @"D://datanew.xml";
+        private string docPath_test = @"D://data_T.xml";
         private string filePath = @"D://file1.pdf";
         int MaxId =0;
         int Id;
@@ -25,9 +27,9 @@ namespace MediaHelper
             InitializeComponent();
             WebClient webClient = new WebClient();
         //    webClient.DownloadFile("http://localhost:3000/getxml", docPath);
-            ReadFromXml(docPath);
+            ReadFromXml(docPath_test1);
             //    webClient.UploadFile("http://localhost:3000/postxml", docPath1);
-
+            //WriteReXml(5);
 
 
         }
@@ -57,23 +59,25 @@ namespace MediaHelper
 
             }
         }
+        
+       
 
-        public void EditXml(string docPath, Technic item)
+        public void EditXml(Technic item)
         {
-            XDocument doc = XDocument.Load(docPath);
+            XDocument doc = XDocument.Load(docPath_test1);
+           
 
             XElement technic = new XElement(item.Type,
-            new XAttribute("id", MaxId.ToString()),
+            new XAttribute("id", item.ID.ToString()),
             new XElement("manufacture", item.Manufacturer),
             new XElement("model", item.Model),
             new XElement("shots", item.Shots));
-
-
             doc.Root.Add(technic);
-            doc.Save(docPath);
+            doc.Save(docPath_test1);
 
         }
         
+               
 
         public void ReadFromXml(string docPath)
         {
@@ -114,7 +118,7 @@ namespace MediaHelper
         {
             // Load data from XML
             DataSet ds = new DataSet();
-            ds.ReadXml(docPath);
+            ds.ReadXml(docPath_test1);
             dataGridView1.GridColor = Color.Green;
             dataGridView1.ForeColor = Color.Green;
             dataGridView1.DataSource = ds.Tables[0];
@@ -130,37 +134,69 @@ namespace MediaHelper
             MaxId = prevId + 1;
         }
 
-       /* public void ReWriteXML(string docPath, Technic item)
+       public void ReWriteXML(string docPath, int sid, string man, string mod, string sh)
         {
+            Console.WriteLine("Проверка_1");
             XDocument doc = XDocument.Load(docPath);
-            var deleteQuery = from r in doc.Descendants("technic") where r.Element("model").Value == txt.Text.Trim() select r;
-            foreach (var qry in deleteQuery)
+
+            var items = from it in doc.Descendants("Camera")
+                        where it.Attribute("id").Value == sid.ToString()
+                        select it;
+
+
+            foreach (XElement itemElement in items)
             {
-                qry.Element("Camera").Remove();
-                
+                itemElement.SetElementValue("manufacture", man);
+                itemElement.SetElementValue("model", mod);
+                itemElement.SetElementValue("shots", sh);
+                Console.WriteLine(itemElement.ToString());
+                Console.WriteLine("Проверка_2");
             }
+
             doc.Save(docPath_test);
-        }*/
+        }
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            //ReWriteXML(docPath1, 3, "Сапог","АХАХА","100");
+                       
             int last = dataGridView1.Rows.Count - 2;
 
             string man = dataGridView1.Rows[last].Cells[0].Value.ToString();
             string model = dataGridView1.Rows[last].Cells[1].Value.ToString();
+            
             int r;
             Int32.TryParse(dataGridView1.Rows[last].Cells[3].Value.ToString(), out r);
+            int rows = dataGridView1.RowCount;
+            int clmns = dataGridView1.ColumnCount;
             if (r != 0)
             {
                 int id = Int32.Parse(dataGridView1.Rows[last].Cells[3].Value.ToString());
                 int prevId = Int32.Parse(dataGridView1.Rows[last - 1].Cells[3].Value.ToString());
 
-                EditXml(docPath, new Technic(prevId+1, "Camera", man, model));
+                
+
+                
+                    //XDocument temp = new XDocument();
+                    //temp.Save(docPath_test1);
+
                 addButton.Visible = false;
             }
             else
             {
                 MessageBox.Show("Введите число");
+            }
+
+            WriteToXml(docPath_test1, new Technic("Camera",
+                 dataGridView1.Rows[0].Cells[0].Value.ToString(),
+                 dataGridView1.Rows[0].Cells[1].Value.ToString(),
+                0));
+            for (int i = 1; i < rows-1; i++)
+            {
+                EditXml(new Technic(i+1, "Camera", 
+                    dataGridView1.Rows[i].Cells[0].Value.ToString(), 
+                    dataGridView1.Rows[i].Cells[1].Value.ToString(), 500));
+
             }
 
         }
