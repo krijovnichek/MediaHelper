@@ -97,6 +97,10 @@ namespace MediaHelper
                     }
                     else { MessageBox.Show("НЕТ ТЗ"); }
                 }
+                if (files.Length == 0)
+                {
+                    MessageBox.Show("НЕТ ТЗ");
+                }
             }
             catch (DirectoryNotFoundException)
             {

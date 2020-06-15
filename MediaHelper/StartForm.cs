@@ -31,7 +31,6 @@ namespace MediaHelper
             int counter = 0;
             for (int i = 0; i < projects.Count; i++)
             {
-                //Console.WriteLine(projects[i].Path);
                 if (Directory.Exists(projects[i].Path))
                 {
                     Label n = new Label();
