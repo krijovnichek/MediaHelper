@@ -31,12 +31,12 @@ namespace MediaHelper
             
         }
 
-        public Technic(int id, string type, string manufacturer, string model, int shots = 0)
+        public Technic(int id, string type, string manufacturer, string model, int shots)
         {
             Type = type;
             Manufacturer = manufacturer;
             Model = model;
-            Shots = 0;
+            Shots = shots;
             Limit = 100000;
             ID = id;
 

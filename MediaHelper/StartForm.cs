@@ -28,32 +28,37 @@ namespace MediaHelper
         {
             //TODO
             List<Project> projects = DocReader.ProjectFromXml(docPath);
-
+            int counter = 0;
             for (int i = 0; i < projects.Count; i++)
             {
-                Label n = new Label();
-                n.Name = "prj_" + i.ToString(); 
-                n.Width = 300;
-                n.Font = new Font("Roboto", 10, FontStyle.Bold);
-                n.ForeColor = Color.White;
-                n.Text = projects[i].Name;
-                n.Click += new EventHandler(this.label_Click);
-                n.Cursor = Cursors.Hand;
-                listlLabelName.Add(n);
+                //Console.WriteLine(projects[i].Path);
+                if (Directory.Exists(projects[i].Path))
+                {
+                    Label n = new Label();
+                    n.Name = "prj_" + counter.ToString();
+                    n.Width = 300;
+                    n.Font = new Font("Roboto", 10, FontStyle.Bold);
+                    n.ForeColor = Color.White;
+                    n.Text = projects[i].Name;
+                    n.Click += new EventHandler(this.label_Click);
+                    n.Cursor = Cursors.Hand;
+                    listlLabelName.Add(n);
 
-                Label p = new Label();
-                p.Name = "path_" + i.ToString();
-                p.Width = 300;
-                p.Font = new Font("Roboto", 8, FontStyle.Regular);
-                p.ForeColor = Color.White;
-                p.Text = projects[i].Path;
-                p.Click += new EventHandler(this.label_Click);
-                p.Cursor = Cursors.Hand;
+                    Label p = new Label();
+                    p.Name = "path_" + counter.ToString();
+                    p.Width = 300;
+                    p.Font = new Font("Roboto", 8, FontStyle.Regular);
+                    p.ForeColor = Color.White;
+                    p.Text = projects[i].Path;
+                    p.Click += new EventHandler(this.label_Click);
+                    p.Cursor = Cursors.Hand;
 
-                listlLabels.Add(p);
+                    listlLabels.Add(p);
 
-                this.tableLayoutPanel1.Controls.Add(n, 0, i);
-                this.tableLayoutPanel1.Controls.Add(p, 1, i);
+                    this.tableLayoutPanel1.Controls.Add(n, 0, counter);
+                    this.tableLayoutPanel1.Controls.Add(p, 1, counter);
+                    counter++;
+                }
             }
 
             panel2.Cursor = Cursors.Hand;

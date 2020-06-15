@@ -98,6 +98,7 @@ namespace MediaHelper
                     Directory.CreateDirectory(path + "\\Source\\Others");
                     Directory.CreateDirectory(path + "\\Source\\Audio");
                     Directory.CreateDirectory(path + "\\Source\\Images");
+                 
                     Directory.CreateDirectory(path + "\\Source\\Images\\AI");
                     //Directory.CreateDirectory(path + "\\Source\\Images\\png");
 
@@ -150,6 +151,8 @@ namespace MediaHelper
                     MoveToPath(file, targetPath);
 
                 } 
+
+               
                 else if (Directory.Exists(file)) {
                    
                     foreach (string i in Directory.GetFiles(file))
@@ -176,7 +179,7 @@ namespace MediaHelper
                 }
                 else
                 {
-                    targetPath = path + "\\Docs\\Others\\" + name;
+                    targetPath = path + "\\Source\\Others\\" + name;
                     MoveToPath(file, targetPath);
 
                 }
@@ -196,13 +199,13 @@ namespace MediaHelper
             {
                 System.IO.File.Copy(file, targetPath, false);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Console.WriteLine("Ошибка записи");
-                throw;
+                MessageBox.Show("Обработанная ошибка файла");
+                MessageBox.Show(e.ToString());
             }
 
-            Console.WriteLine("Все ок");
         }
 
 

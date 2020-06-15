@@ -195,7 +195,9 @@ namespace MediaHelper
             {
                 EditXml(new Technic(i+1, "Camera", 
                     dataGridView1.Rows[i].Cells[0].Value.ToString(), 
-                    dataGridView1.Rows[i].Cells[1].Value.ToString(), 500));
+                    dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                    Int32.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString())
+                    ));
 
             }
 
